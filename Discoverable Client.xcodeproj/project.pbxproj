@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,6 +13,7 @@
 		B511493724C49CE00039EBEC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B511493524C49CE00039EBEC /* Main.storyboard */; };
 		B511493924C49CE30039EBEC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B511493824C49CE30039EBEC /* Assets.xcassets */; };
 		B511493C24C49CE30039EBEC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B511493A24C49CE30039EBEC /* LaunchScreen.storyboard */; };
+		B511494524C49E330039EBEC /* Discoverable in Frameworks */ = {isa = PBXBuildFile; productRef = B511494424C49E330039EBEC /* Discoverable */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -31,6 +32,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B511494524C49E330039EBEC /* Discoverable in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -83,6 +85,9 @@
 			dependencies = (
 			);
 			name = "Discoverable Client";
+			packageProductDependencies = (
+				B511494424C49E330039EBEC /* Discoverable */,
+			);
 			productName = "Discoverable Client";
 			productReference = B511492C24C49CE00039EBEC /* Discoverable Client.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +116,9 @@
 				Base,
 			);
 			mainGroup = B511492324C49CE00039EBEC;
+			packageReferences = (
+				B511494324C49E330039EBEC /* XCRemoteSwiftPackageReference "Discoverable" */,
+			);
 			productRefGroup = B511492D24C49CE00039EBEC /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,7 +224,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +278,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -338,6 +346,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B511494324C49E330039EBEC /* XCRemoteSwiftPackageReference "Discoverable" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/benmechen/Discoverable.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B511494424C49E330039EBEC /* Discoverable */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B511494324C49E330039EBEC /* XCRemoteSwiftPackageReference "Discoverable" */;
+			productName = Discoverable;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = B511492424C49CE00039EBEC /* Project object */;
 }
