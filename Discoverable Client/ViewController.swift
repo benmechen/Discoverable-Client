@@ -21,6 +21,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        connectionService.delegate = self
+        
         // Do any additional setup after loading the view.
         sendButton.layer.cornerRadius = 12.5
         connectButton.layer.cornerRadius = 12.5
@@ -33,15 +35,29 @@ class ViewController: UIViewController {
             connectionService.close()
         }
     }
+    
+    @IBAction func send(_ sender: Any) {
+        guard (textField.text != nil) else {
+            return
+        }
+        
+        connectionService.send(textField.text!)
+    }
 }
 
 extension ViewController: DiscoverableDelegate {
     func connectionState(state: Discoverable.State) {
-        switch state {
-        case .connected:
-            isConnected = true
-        default:
-            isConnected = false
+        DispatchQueue.main.async {
+            switch state {
+            case .connected:
+                self.isConnected = true
+                self.connectButton.setTitle("Disconnect", for: .normal)
+                self.sendButton.isEnabled = true
+            default:
+                self.isConnected = false
+                self.connectButton.setTitle("Connect", for: .normal)
+                self.sendButton.isEnabled = false
+            }
         }
     }
     

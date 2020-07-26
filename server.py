@@ -2,7 +2,7 @@ import socket
 import datetime
 from zeroconf import ServiceInfo, Zeroconf
 
-HOST = '***ENTER IP ADDRESS HERE***'
+HOST = '192.168.1.113'
 PORT = 1024        # Port to listen on (non-privileged ports are > 1023)
 address = ""
 
