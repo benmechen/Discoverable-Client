@@ -21,13 +21,12 @@ print(" > Server started on " + socket.gethostname() + ":" + str(PORT))
 zeroconf = Zeroconf()
 
 fqdn = socket.gethostname()
-ip_addr = socket.gethostbyname(fqdn)
 hostname = fqdn.split('.')[0]
 
 desc = {'service': 'Discoverable Service', 'version': '1.0.0'}
 info = ServiceInfo('_discoverable._udp.local.',
                     hostname + ' Service._discoverable._udp.local.',
-                    addresses=[socket.inet_aton(ip_addr)], port=PORT, properties=desc)
+                    addresses=[socket.inet_aton(hostIp)], port=PORT, properties=desc)
 try:
     zeroconf.register_service(info)
     print(" > Discoverable service " + str(desc) + " registered:\n" + str(info))
@@ -38,7 +37,7 @@ try:
         print(" > Received: " + message.decode('utf-8') + " from " + str(address))
         serverSocket.sendto("dscv_ack".encode('utf-8'), address)
         if "dscv_discover" in string:
-            returnMessage = "dscv_shake:" + ip_addr
+            returnMessage = "dscv_shake:" + hostIp
             print(" > Discover call from client: " + str(address))
             print(" > Sending handshake: " + returnMessage + ", to address: " + str(address))
             serverSocket.sendto(returnMessage.encode('utf-8'), address)
