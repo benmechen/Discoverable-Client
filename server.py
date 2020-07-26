@@ -2,7 +2,7 @@ import socket
 import datetime
 from zeroconf import ServiceInfo, Zeroconf
 
-
+HOST = '***ENTER IP ADDRESS HERE***'
 PORT = 1024        # Port to listen on (non-privileged ports are > 1023)
 address = ""
 
@@ -14,9 +14,8 @@ serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
 hostName = socket.gethostname() 
-hostIp = socket.gethostbyname(hostName) 
-serverSocket.bind((hostIp, PORT))
-print(" > Server started on " + socket.gethostname() + ":" + str(PORT))
+serverSocket.bind((HOST, PORT))
+print(" > Server started on " + socket.gethostname() + ":" + HOST + ":" + str(PORT))
 
 zeroconf = Zeroconf()
 
@@ -26,7 +25,7 @@ hostname = fqdn.split('.')[0]
 desc = {'service': 'Discoverable Service', 'version': '1.0.0'}
 info = ServiceInfo('_discoverable._udp.local.',
                     hostname + ' Service._discoverable._udp.local.',
-                    addresses=[socket.inet_aton(hostIp)], port=PORT, properties=desc)
+                    addresses=[socket.inet_aton(HOST)], port=PORT, properties=desc)
 try:
     zeroconf.register_service(info)
     print(" > Discoverable service " + str(desc) + " registered:\n" + str(info))
