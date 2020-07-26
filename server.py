@@ -36,7 +36,7 @@ try:
         print(" > Received: " + message.decode('utf-8') + " from " + str(address))
         serverSocket.sendto("dscv_ack".encode('utf-8'), address)
         if "dscv_discover" in string:
-            returnMessage = "dscv_shake:" + hostIp
+            returnMessage = "dscv_shake:" + HOST
             print(" > Discover call from client: " + str(address))
             print(" > Sending handshake: " + returnMessage + ", to address: " + str(address))
             serverSocket.sendto(returnMessage.encode('utf-8'), address)
