@@ -3,7 +3,6 @@ import datetime
 from zeroconf import ServiceInfo, Zeroconf
 
 
-HOST = ''          # Open server up on local network
 PORT = 1024        # Port to listen on (non-privileged ports are > 1023)
 address = ""
 
@@ -14,7 +13,9 @@ print("#############################\n")
 serverSocket = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
 serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST, 1)
-serverSocket.bind((HOST, PORT))
+hostName = socket.gethostname() 
+hostIp = socket.gethostbyname(hostName) 
+serverSocket.bind((hostIp, PORT))
 print(" > Server started on " + socket.gethostname() + ":" + str(PORT))
 
 zeroconf = Zeroconf()
